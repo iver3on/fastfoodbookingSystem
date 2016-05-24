@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="86170804" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="false" />
+	<package name="TraderSys" namespace="/" extends="struts-default">
+	<action name="traderRegist" class="action.TraderAction" method="registe">
+		<result name="success">seller_login.jsp</result>
+		<result name="false">seller_regist.jsp</result>
+	</action>
+	<action name="goRegist" class="action.TraderAction" method="goRegist">
+		<result name="success">seller_regist.jsp</result>
+	</action>
+		<action name="pChange"
+			class="action.TraderAction">
+			<result name="success">seller_regist.jsp</result>
+		</action>
+	<action name="traderLogin" class="action.TraderAction" method="login">
+	<result name="success">seller_dishmanagement.jsp</result>
+	<result name="false">seller_regist.jsp</result>
+	</action>
+	
+	<action name="addOrder" class="action.OrderAction" method="addOrder">
+	</action>
+	<action name="showOrder" class="action.OrderAction" method="showOrder">
+		<result name="success">/Order.jsp</result>
+	</action>
+	</package>
+</struts>    

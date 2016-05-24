@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="86170804" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="false" />
+	<package name="foodwall" namespace="/" extends="struts-default">
+	
+		<action name="filetrans" class="action.FileTrans" method="filetrans">
+		</action>
+		<action name="userinit" class="action.UserInit" method="userinit">
+		</action>
+		<action name="listItems" class="action.ListItems" method="listitems">
+		<result type="stream">info</result>
+		</action>
+		<action name="neworder" class="action.NewOrder" method="getneworder">
+		</action>
+		
+	
+	</package>
+</struts>    

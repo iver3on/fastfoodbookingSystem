@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="resource"></constant>
+	<package name="df" namespace="/" extends="struts-default">
+		<action name="putOrdertoTrader" class="action.OrderAction"
+			method="putOrdertoTrader">
+			<result type="chain">showItems</result>
+		</action>
+		<action name="getOrderForm" class="action.OrderAction" method="getOrderForm">
+			<result type="chain">putOrdertoTrader</result>
+		</action>
+
+		<action name="customerRegist" class="action.CustomerAction"
+			method="regist">
+			<result name="success">buyer_login.jsp</result>
+			<result name="fail">firstlogin.jsp</result>
+		</action>
+		<action name="customerLogin" class="action.CustomerAction"
+			method="login">
+			<result type="chain">showItems</result>
+			<result name="fail">firstlogin.jsp</result>
+		</action>
+		<action name="showItems" class="action.ShowItemsAction" method="showitems">
+			<result name="success">buyer_meal_wall.jsp</result>
+		</action>
+
+		<action name="ExitSysAction" class="action.ExitSysAction">
+			<result>buyer_login.jsp</result>
+		</action>
+	</package>
+</struts>
+    
+   

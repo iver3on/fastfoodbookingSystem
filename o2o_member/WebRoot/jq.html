@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>jq.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		
+		var cart={foodItems:[],total:0};
+		
+		$(document).ready(function(){
+			$(".food button").click(function(){
+				var exist=false;
+				var fi;
+				var foodItem={};
+				var price =parseFloat($(this).prev().text());
+				var fname=$(this).prev().prev().text();
+				for(var i=0;i<cart.foodItems.length;i++){
+					if(cart.foodItems[i].fname==fname){
+						fi=cart.foodItems[i];
+						exist=true;
+						break;
+					}
+				}
+				
+				if(exist){
+					fi.count+=1;
+					fi.gprice=price*fi.count;
+					
+				}
+				else{
+				
+					foodItem.price=price;
+					foodItem.fname=fname;
+					foodItem.count=1;
+					foodItem.gprice=price;
+					cart.foodItems.push(foodItem);	
+				}
+				cart.total+=price;
+				
+				var items=$("#items");
+				items.text("");
+				for(var i=0;i<cart.foodItems.length;i++){
+					var f=cart.foodItems[i];
+					var item=$("<tr><td>"+f.fname+"<td><td>"+f.count+"<td><td>"+f.gprice+"<td></tr>");
+					items.append(item);
+				
+				}
+				
+				$("#total").text(cart.total);
+					
+				
+				
+				
+				
+					
+			});	
+		});	
+		
+	</script>
+	
+	<style type="text/css">
+		.food img{
+			width: 200px;
+			height: 200px;
+			display: block;
+		}
+		.food span{
+			display: block;
+		}
+		.food{
+			float: left;
+			margin-left: 100px;
+		}
+		#cart{
+			width: 200px;
+			height: 400px;
+			border: 1px gray solid;
+			margin-left: 100px;
+		}
+		#cart_info{
+			position: relative;
+			top: 280px;
+		}
+		
+	
+	</style>
+	
+  </head>
+  
+  <body>
+	    <div class="food">
+	    	<img alt="" src="1.jpg">
+	    	<span>红薯套餐</span>
+	    	<span>12.50</span>
+	    	<button>加入购物车</button>
+	    </div>
+	    
+	    <div class="food">
+	    	<img alt="" src="2.jpg">
+	    	<span>牛肉套餐</span>
+	    	<span>22.50</span>
+	    	<button>加入购物车</button>
+	    </div>
+  
+    
+    <div id="cart">
+    	购物车
+    	<div>
+    		<table >
+    			<tr><td>名字</td><td>数量</td><td>价格</td></tr>
+    			<tbody id="items"></tbody>
+    		</table>
+    	</div>
+    	<div id="cart_info">
+    		<span>总计：</span><span id="total">0</span>元<button>去结算>></button>
+    	</div>
+    </div>
+  </body>
+</html>

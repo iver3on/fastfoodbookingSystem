@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="o2o_member"
+  id="myeclipse.1409625204359"
+  context-root="/o2o_member"
+  j2ee-spec="5.0"
+  archive="o2o_member.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
